@@ -22,6 +22,7 @@ requirements:
   build:
     - cargo-bundle-licenses
     - ${{ compiler('c') }}
+    - ${{ compiler('cxx') }}
     - ${{ stdlib('c') }}
     - ${{ compiler('rust') }}
   host:
