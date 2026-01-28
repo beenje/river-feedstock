@@ -20,6 +20,12 @@ build:
 
 requirements:
   build:
+    - if: build_platform != target_platform
+      then:
+        - python
+        - cross-python_${{ target_platform }}
+        - numpy
+        - cython
     - cargo-bundle-licenses
     - ${{ compiler('c') }}
     - ${{ compiler('cxx') }}
