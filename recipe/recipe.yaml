@@ -42,8 +42,9 @@ tests:
   - python:
       imports:
         - river
-        - river._bandit
+        - river.active
         - river.anomaly
+        - river.bandit
         - river.base
         - river.checks
         - river.cluster
@@ -74,6 +75,7 @@ tests:
         - river.proba
         - river.reco
         - river.rules
+        - river.sketch
         - river.stats
         - river.stream
         - river.time_series
