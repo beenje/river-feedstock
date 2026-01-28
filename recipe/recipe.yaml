@@ -35,8 +35,8 @@ requirements:
     - pip
   run:
     - python
-    - scipy >=1.5
-    - pandas >=1.3
+    - scipy >=1.14.1,<2
+    - pandas >=2.2.3,<3
     # See https://github.com/online-ml/river/issues/1734
     - typing_extensions
 
