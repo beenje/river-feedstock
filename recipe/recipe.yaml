@@ -2,27 +2,29 @@ schema_version: 1
 
 context:
   name: river
-  version: 0.13.0
+  version: 0.23.0
 
 package:
   name: ${{ name|lower }}
   version: ${{ version }}
 
 source:
-  url: https://pypi.io/packages/source/${{ name[0] }}/${{ name }}/river-${{ version }}.tar.gz
-  sha256: 9d068b7a9db32302fbd581af81315681dfe61774a5d777fb3d5982d3c3061340
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/river-${{ version }}.tar.gz
+  sha256: f174cb8e5984be1a193827faf8e09a03ceb110a055290628accc72ec987390f1
 
 build:
-  number: 4
-  skip: match(python, "<3.8")
+  number: 0
   script: ${{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
     - ${{ compiler('c') }}
+    - ${{ stdlib('c') }}
     - ${{ compiler('rust') }}
   host:
     - python
+    - poetry-core
+    - setuptools
     - setuptools-rust
     - numpy
     - cython
@@ -31,7 +33,6 @@ requirements:
     - python
     - scipy >=1.5
     - pandas >=1.3
-    - ${{ pin_compatible('numpy') }}
 
 tests:
   - python:
@@ -77,11 +78,6 @@ tests:
         - river.tree.split_criterion
         - river.tree.splitter
         - river.utils
-  - requirements:
-      run:
-        - pip
-    script:
-      - pip check
 
 about:
   summary: Online machine learning in Python
